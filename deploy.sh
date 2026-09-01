@@ -15,4 +15,4 @@ npx --yes vercel@latest --prod --yes
 
 echo
 echo "✅ 배포 완료"
-echo "   https://sjhbrad-vibe.vercel.app"
+echo "   https://sjhbread-vibe.vercel.app"
