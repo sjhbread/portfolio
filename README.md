@@ -2,7 +2,7 @@
 
 바이브코딩 강사 랜딩페이지. React + Vite.
 
-**라이브: https://portfolio-react-one-mu-89.vercel.app**
+**라이브: https://sjhbrad-vibe.vercel.app**
 
 ## 실행
 

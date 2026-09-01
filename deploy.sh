@@ -15,4 +15,4 @@ npx --yes vercel@latest --prod --yes
 
 echo
 echo "✅ 배포 완료"
-echo "   https://portfolio-react-one-mu-89.vercel.app"
+echo "   https://sjhbrad-vibe.vercel.app"
