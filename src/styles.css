@@ -10,11 +10,16 @@
   --ink-60:    rgba(22, 21, 18, .62);
   --ink-35:    rgba(22, 21, 18, .35);
   --rule:      rgba(22, 21, 18, .16);
+  --accent:    #f4c534;   /* 강조 노랑 — 아주 조금만 쓴다 */
 
-  --heavy: 'Anton', 'Oswald', Impact, sans-serif;   /* 굵고 좁은 대문자 */
-  --serif: 'EB Garamond', 'Playfair Display', Georgia, serif;
-  --ital:  'Playfair Display', Georgia, serif;
-  --cond:  'Oswald', 'Archivo Narrow', sans-serif;  /* 라벨용 좁은 산세리프 */
+  /* 한글 전용 폰트. 라틴 폰트 뒤에 두면, 라틴 폰트에 없는 한글만 여기로 떨어진다.
+     즉 영어 조판은 그대로 두고 한글만 Pretendard 로 고정된다. */
+  --kr: 'Pretendard', 'Pretendard Variable', 'Apple SD Gothic Neo', sans-serif;
+
+  --heavy: 'Anton', 'Oswald', var(--kr);            /* 굵고 좁은 대문자 */
+  --serif: 'EB Garamond', 'Playfair Display', var(--kr);
+  --ital:  'Playfair Display', var(--kr);
+  --cond:  'Oswald', 'Archivo Narrow', var(--kr);   /* 라벨용 좁은 산세리프 */
 
   --pad: clamp(20px, 4.5vw, 64px);
 }
@@ -151,16 +156,26 @@ img { max-width: 100%; display: block; }
 .btn__arrow {
   display: grid; place-items: center;
   width: 38px; height: 38px; border-radius: 50%;
-  background: var(--bg); color: var(--ink);
+  background: var(--accent); color: var(--ink);
   transition: transform .3s;
 }
 .btn__arrow svg { width: 17px; height: 17px; }
 .btn:hover .btn__arrow { transform: rotate(-45deg); }
 
 /* 사진: 위쪽만 둥근 아치 */
-.hero__photo { align-self: end; }
+.hero__photo { align-self: end; position: relative; }
+
+/* 뒤에 깔리는 노란 아치. 사진을 넣어도 옆으로 삐져나와 계속 보인다. */
+.hero__photo::before {
+  content: '';
+  position: absolute;
+  inset: -18px -18px 0 -18px;   /* 위·좌·우로만 삐져나와 바닥선은 맞춘다 */
+  background: var(--accent);
+  border-radius: 50vw 50vw 8px 8px;
+}
+
 .hero__arch {
-  position: relative;
+  position: relative; z-index: 1;
   aspect-ratio: 4 / 5;
   background: var(--bg-soft);
   border-radius: 50vw 50vw 8px 8px;
@@ -290,7 +305,7 @@ img { max-width: 100%; display: block; }
 /* ── CONTACT ─────────────────────────────────────── */
 .contact { text-align: center; border-top: 1px solid var(--rule); }
 .contact__title {
-  font-weight: 400; line-height: 1.04; text-transform: uppercase;
+  font-weight: 400; line-height: .95; text-transform: uppercase;
   margin-bottom: clamp(24px, 4vh, 44px);
 }
 .contact__title span { display: block; }

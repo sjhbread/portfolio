@@ -1,4 +1,4 @@
-import { works } from '../content'
+import { works, sections } from '../content'
 import useReveal from '../useReveal'
 
 function WorkCard({ item, index }) {
@@ -22,9 +22,9 @@ export default function Work() {
   return (
     <section className="section" id="work">
       <div className="section__head">
-        <span className="eyebrow">01 — Selected Work</span>
+        <span className="eyebrow">{sections.work.eyebrow}</span>
         <h2 className="section__title">
-          최근 <em>작업들</em>
+          {sections.work.head} <em>{sections.work.italic}</em>
         </h2>
       </div>
 

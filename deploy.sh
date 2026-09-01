@@ -3,7 +3,7 @@
 # 사용법:  ./deploy.sh
 set -euo pipefail
 
-BASE="${BASE:-/portfolio/}"
+BASE="${BASE:-/portfolio/}"   # GitHub Pages 하위 경로
 
 echo "▶ 빌드 (BASE=$BASE)"
 BASE="$BASE" npm run build

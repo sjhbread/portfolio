@@ -1,90 +1,104 @@
 // ─────────────────────────────────────────────────────────────
 //  사이트에 나오는 모든 글·숫자는 여기 있다.
-//  ★ 표시는 지금 예시값이다. 실제 값으로 바꿔야 한다.
+//  ★ = 아직 실제 값이 아니다. 반드시 채워야 한다.
+//
+//  목적: 바이브코딩 강사 브랜딩 / 주 대상: 비개발자·입문자
 // ─────────────────────────────────────────────────────────────
 
 export const site = {
-  name: 'SOLT',                       // ★ 로고 / 푸터에 나오는 이름
-  greeting: "Hey. I'm Solt,",         // ★
-  email: 'ardors.official@gmail.com', // ★
+  name: 'SOLT',                       // ★ 실제 이름 또는 활동명
+  greeting: "Hey. I'm Solt — a developer.",  // ★ 실제 이름
+  email: 'ardors.official@gmail.com',
   location: 'Seoul, KR',
+  ctaLabel: 'Follow Along',           // 히어로 버튼 문구
 }
 
+// 레퍼런스와 같은 구조: 굵은 대문자 → 세리프 이탤릭 → 굵은 대문자
 export const heroTitle = [
-  { text: 'A UI/UX', style: 'heavy' },   // 굵은 대문자
-  { text: '& Brand', style: 'italic' },  // 세리프 이탤릭
-  { text: 'Designer', style: 'heavy' },
+  { text: 'Vibe Coding', style: 'heavy' },
+  { text: 'for', style: 'italic' },
+  { text: 'Everyone', style: 'heavy' },
 ]
 
 export const heroLead =
-  '아이디어를 눈에 보이는 결과로 바꿉니다. 시선을 붙잡고, 머물게 하고, 결국 행동하게 만드는 UI/UX와 브랜드 디자인.'
+  '코딩을 몰라도 만들 수 있습니다. AI에게 제대로 시키는 법을 가르칩니다. 첫 시간에 이론 대신, 실제로 돌아가는 걸 하나 만들어서 돌아갑니다.'
 
-// ★ 전부 예시 숫자다. 사실과 다르면 반드시 고쳐라.
+// ★ 실제 숫자를 받기 전까지 비워둔다. 지어내지 않는다.
 export const stats = [
-  { value: '15+', label: 'Years Experience' },
-  { value: '280+', label: 'Projects Delivered' },
-  { value: '*99%', label: 'Client Satisfaction' },
-  { value: '50', label: 'Clients Worldwide' },
+  { value: '—', label: 'Students Taught' },
+  { value: '—', label: 'Sessions Run' },
+  { value: '—', label: 'Hours Taught' },
+  { value: '—', label: 'Would Recommend' },
 ]
 
+// 비개발자 입장에서 "나에게 뭐가 좋은가"로 쓴다
 export const services = [
-  { title: 'USER-CENTERED DESIGN', desc: '사용자에게 딱 맞춘, 직관적이고 몰입되는 경험.' },
-  { title: 'BRAND IDENTITY & STRATEGY', desc: '기억에 남는 브랜드를 만드는 강한 시각적 서사.' },
-  { title: 'RESPONSIVE & MODERN UI', desc: '어떤 화면에서도 흐트러지지 않는 픽셀 단위 설계.' },
-  { title: 'SEAMLESS PROTOTYPING', desc: '개발 전에 만져보는 인터랙티브 목업.' },
+  { title: 'NO CODING REQUIRED', desc: '코드를 외우지 않습니다. AI에게 시키는 법을 배웁니다.' },
+  { title: 'BUILD FROM DAY ONE', desc: '첫 시간부터 돌아가는 결과물을 하나 만듭니다.' },
+  { title: 'IDEA TO LIVE URL', desc: '머릿속 아이디어를 인터넷 주소까지 올려봅니다.' },
+  { title: 'STUCK? ASK ANYTHING', desc: '막히는 지점을 그 자리에서 같이 풉니다.' },
 ]
 
 export const marqueeText =
-  'UI/UX Design ✱ Brand Identity ✱ Design System ✱ Prototyping ✱ Art Direction ✱'
+  'Vibe Coding ✱ Claude Code ✱ AI Pair Programming ✱ Ship It ✱ No Experience Needed ✱'
 
-// ★ 전부 예시 프로젝트다. 실제 작업으로 바꿔라.
-// image 에 파일 경로를 넣으면 회색 박스 대신 사진이 뜬다. (예: image: '/work-1.jpg')
+// 섹션 제목. head = 굵은 대문자, italic = 세리프 이탤릭
+export const sections = {
+  work:    { eyebrow: '01 — Selected Sessions', head: 'Selected', italic: 'Sessions' },
+  about:   { eyebrow: '02 — About' },
+  process: { eyebrow: '03 — How It Works', head: 'How It', italic: 'Works' },
+  contact: { eyebrow: '04 — Contact' },
+}
+
+// ★ 전부 예시다. 실제 강의/워크숍/영상으로 바꿔라.
+// image 에 파일 경로를 넣으면 회색 박스 대신 사진이 뜬다. (예: image: '/session-1.jpg')
 export const works = [
-  { no: '01', title: 'Nova Finance App', tags: '모바일 뱅킹 · UI/UX · 디자인 시스템', year: '2025', href: '#', image: null },
-  { no: '02', title: 'Ardor Studio Rebrand', tags: '브랜드 아이덴티티 · 아트 디렉션', year: '2025', href: '#', image: null },
-  { no: '03', title: 'Loop Commerce', tags: '이커머스 · 웹 디자인 · 전환 최적화', year: '2024', href: '#', image: null },
-  { no: '04', title: 'Halo Health', tags: '헬스케어 SaaS · 대시보드 · 프로토타입', year: '2024', href: '#', image: null },
+  { no: '01', title: '★ 강의 이름', tags: '★ 대상 · 형식 · 시간', year: '2026', href: '#', image: null },
+  { no: '02', title: '★ 강의 이름', tags: '★ 대상 · 형식 · 시간', year: '2026', href: '#', image: null },
+  { no: '03', title: '★ 강의 이름', tags: '★ 대상 · 형식 · 시간', year: '2025', href: '#', image: null },
+  { no: '04', title: '★ 강의 이름', tags: '★ 대상 · 형식 · 시간', year: '2025', href: '#', image: null },
 ]
 
 export const about = {
-  titleHead: '디자인은',
-  titleItalic: '결정',
-  titleTail: '의 기록',
-  lead: '예쁜 화면을 만드는 일이 아니라, 왜 이 버튼이 여기 있어야 하는지를 설명할 수 있게 만드는 일이라고 생각합니다.',
-  // ★ 아래 문단의 연차·프로젝트 수도 예시다.
-  body: '15년 동안 스타트업부터 대기업까지 280개가 넘는 프로젝트를 진행했습니다. 브랜드의 뼈대를 세우는 일부터, 매일 쓰이는 제품 화면을 다듬는 일까지. 공통점은 하나입니다 — 숫자로 확인되는 결과.',
+  titleHead: 'Anyone Can',
+  titleItalic: 'Ship',
+  titleTail: 'Now',
+  lead: '만드는 일이 개발자만의 것이던 시절은 끝났습니다. 이제 필요한 건 문법이 아니라, 원하는 걸 정확히 말하는 능력입니다.',
+  // ★ 본인 이력으로 바꿔라. 확인되지 않은 숫자·경력은 넣지 마라.
+  body: '★ 개발자로 일해온 이야기, 왜 가르치기 시작했는지, 어떤 사람들을 가르쳐 왔는지를 여기에 쓴다.',
   facts: [
-    { key: 'Design', value: 'UI/UX · 브랜드 · 디자인 시스템' },
-    { key: 'Tools', value: 'Figma · Framer · After Effects' },
+    { key: 'Teaching', value: '바이브코딩 · AI 활용 · 노코드에서 실제 코드로' },
+    { key: 'Tools', value: 'Claude Code · Cursor · Vercel' },
     { key: 'Based in', value: 'Seoul, South Korea' },
   ],
 }
 
+// 수업이 굴러가는 방식
 export const process = [
-  { no: '01', title: 'Discover', desc: '문제를 정의합니다. 사용자, 경쟁사, 데이터부터 봅니다.' },
-  { no: '02', title: 'Define', desc: '구조와 흐름을 잡습니다. 화면을 그리기 전에 결정을 먼저.' },
-  { no: '03', title: 'Design', desc: '비주얼과 시스템을 만듭니다. 재사용 가능한 단위로.' },
-  { no: '04', title: 'Deliver', desc: '개발에 넘기고, 출시 후 숫자를 보며 다듬습니다.' },
+  { no: '01', title: 'Bring', desc: '만들고 싶은 걸 하나 가지고 옵니다. 거창하지 않아도 됩니다.' },
+  { no: '02', title: 'Prompt', desc: 'AI에게 어떻게 말해야 원하는 게 나오는지 배웁니다.' },
+  { no: '03', title: 'Ship', desc: '만든 걸 실제 인터넷 주소에 올립니다. 남들이 볼 수 있게.' },
+  { no: '04', title: 'Repeat', desc: '혼자서도 다음 걸 만들 수 있는 상태로 끝납니다.' },
 ]
 
 export const contact = {
   lines: [
-    { text: '함께', style: 'heavy' },
-    { text: '만들어', style: 'italic' },
-    { text: '볼까요', style: 'heavy' },
+    { text: 'Let’s', style: 'heavy' },
+    { text: 'Build', style: 'italic' },
+    { text: 'Together', style: 'heavy' },
   ],
-  // ★ 실제 프로필 주소로 바꿔라.
+  // ★ 실제 채널 주소로 바꿔라. 없는 채널은 지워라.
   links: [
-    { label: 'LinkedIn', href: '#' },
-    { label: 'Behance', href: '#' },
-    { label: 'Dribbble', href: '#' },
+    { label: 'YouTube', href: '#' },
+    { label: 'Newsletter', href: '#' },
     { label: 'Instagram', href: '#' },
+    { label: 'GitHub', href: 'https://github.com/sjhbread' },
   ],
 }
 
 export const nav = [
-  { no: '01', label: 'Work', href: '#work' },
+  { no: '01', label: 'Sessions', href: '#work' },
   { no: '02', label: 'About', href: '#about' },
-  { no: '03', label: 'Process', href: '#process' },
+  { no: '03', label: 'How', href: '#process' },
   { no: '04', label: 'Contact', href: '#contact' },
 ]

@@ -1,4 +1,4 @@
-import { process } from '../content'
+import { process, sections } from '../content'
 import useReveal from '../useReveal'
 
 function Step({ step, index }) {
@@ -17,9 +17,9 @@ export default function Process() {
   return (
     <section className="section" id="process">
       <div className="section__head">
-        <span className="eyebrow">03 — Process</span>
+        <span className="eyebrow">{sections.process.eyebrow}</span>
         <h2 className="section__title">
-          일하는 <em>순서</em>
+          {sections.process.head} <em>{sections.process.italic}</em>
         </h2>
       </div>
 
