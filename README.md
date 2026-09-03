@@ -1,4 +1,4 @@
-# SOLT — Vibe Coding for Everyone
+# sjhbread — Vibe Coding for Everyone
 
 바이브코딩 강사 랜딩페이지. React + Vite.
 

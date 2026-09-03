@@ -22,24 +22,35 @@ export default function Hero() {
 
         <p className="hero__lead">{heroLead}</p>
 
-        <a className="btn" href="#contact">
-          <span>{site.ctaLabel}</span>
-          <i className="btn__arrow" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M5 12h13M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </i>
-        </a>
+        <div className="hero__actions">
+          <a className="btn btn--kr" href={site.ctaPrimary.href}>
+            <span>{site.ctaPrimary.label}</span>
+            <i className="btn__arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 12h13M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </i>
+          </a>
+
+          <a className="btn-text" href={site.ctaSecondary.href}>
+            {site.ctaSecondary.label}
+          </a>
+        </div>
       </div>
 
       <figure className="hero__photo">
         <div className={`hero__arch${photoFailed ? ' is-empty' : ''}`}>
           {!photoFailed && (
-            <img src={PHOTO} alt="" onError={() => setPhotoFailed(true)} />
+            <img
+              src={PHOTO}
+              alt={site.name}
+              loading="eager"
+              onError={() => setPhotoFailed(true)}
+            />
           )}
           <span className="photo-hint">
             photo.jpg
-            <small>public 폴더에 사진을 넣으세요</small>
+            <small>public/photo.jpg 로 사진을 넣으세요</small>
           </span>
         </div>
       </figure>
@@ -47,7 +58,7 @@ export default function Hero() {
       <ul className="hero__stats">
         {stats.map((s) => (
           <li key={s.label}>
-            <b>{s.value}</b>
+            <b className={s.kr ? 'is-kr' : undefined}>{s.value}</b>
             <span>{s.label}</span>
           </li>
         ))}

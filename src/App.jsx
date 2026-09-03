@@ -6,6 +6,7 @@ import { Strip, Marquee } from './components/Strip'
 import Work from './components/Work'
 import About from './components/About'
 import Process from './components/Process'
+import Curriculum from './components/Curriculum'
 import { Contact, Footer } from './components/Contact'
 
 export default function App() {
@@ -37,6 +38,7 @@ export default function App() {
         <Work />
         <About />
         <Process />
+        <Curriculum />
         <Contact />
       </main>
 

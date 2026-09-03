@@ -1,5 +1,5 @@
 /* ============================================================
-   SOLT — Portfolio
+   sjhbread — Portfolio
    색은 딱 두 개(베이지 / 먹색)만 쓴다. 레퍼런스의 핵심 규칙.
    ============================================================ */
 
@@ -16,12 +16,13 @@
      즉 영어 조판은 그대로 두고 한글만 Pretendard 로 고정된다. */
   --kr: 'Pretendard', 'Pretendard Variable', 'Apple SD Gothic Neo', sans-serif;
 
-  --heavy: 'Anton', 'Oswald', var(--kr);            /* 굵고 좁은 대문자 */
-  --serif: 'EB Garamond', 'Playfair Display', var(--kr);
-  --ital:  'Playfair Display', var(--kr);
+  --heavy: 'Anton', 'Oswald', var(--kr);            /* 모든 영문 제목 */
+  --serif: var(--kr);                               /* 본문. 영문·한글 다 Pretendard */
+  --ital:  'Anton', 'Oswald', var(--kr);            /* 강조 줄도 같은 Anton. 윤곽선으로만 구분 */
   --cond:  'Oswald', 'Archivo Narrow', var(--kr);   /* 라벨용 좁은 산세리프 */
 
   --pad: clamp(20px, 4.5vw, 64px);
+  --stroke: clamp(1.5px, .28vw, 3px);               /* 윤곽선 글자 두께 */
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -98,6 +99,7 @@ img { max-width: 100%; display: block; }
 .nav-panel.is-open li:nth-child(2) a { transition-delay: .06s; }
 .nav-panel.is-open li:nth-child(3) a { transition-delay: .12s; }
 .nav-panel.is-open li:nth-child(4) a { transition-delay: .18s; }
+.nav-panel.is-open li:nth-child(5) a { transition-delay: .24s; }
 .nav-panel ul a:hover { opacity: .55; }
 .nav-panel ul a em {
   font-family: var(--cond); font-style: normal;
@@ -121,24 +123,39 @@ img { max-width: 100%; display: block; }
 }
 
 .hero__hi {
-  font-family: var(--serif); font-size: clamp(22px, 2.4vw, 32px);
-  margin-bottom: .35em;
+  /* 한 줄로 떨어지게 잡은 크기다. 문구를 늘리면 두 줄로 깨진다. */
+  font-family: var(--serif); font-size: clamp(19px, 2.05vw, 28px);
+  margin-bottom: .4em;
 }
 .hero__title {
   font-weight: 400; text-transform: uppercase;
-  line-height: .92; letter-spacing: -.005em;
+  line-height: 1; letter-spacing: -.005em;
 }
-.hero__title .line { display: block; }
-.hero__title .heavy {
+/* Anton 은 글자가 em 박스를 꽉 채운다. 줄을 블록으로 두고 살짝 여유를 준다. */
+.hero__title .line {
+  display: block;
   font-family: var(--heavy);
   font-size: clamp(52px, 7.6vw, 108px);
+  padding-block: .04em;
 }
-.hero__title .italic {
-  font-family: var(--ital); font-style: italic; font-weight: 700;
-  text-transform: none;
-  font-size: clamp(52px, 7.6vw, 108px);
-  margin: -.04em 0 -.02em -.02em;
+/* 강조 줄: 폰트를 바꾸지 않고 속을 비워서 구분한다.
+   같은 Anton 이라 줄이 어긋나지 않고, 위아래 줄과 겹치지도 않는다. */
+.hero__title .italic,
+.contact__title .italic,
+.section__title em {
+  font-style: normal;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: var(--stroke) var(--ink);
 }
+/* -webkit-text-stroke 를 모르는 브라우저에서는 흐린 먹색으로 떨어뜨린다. */
+@supports not (-webkit-text-stroke: 1px black) {
+  .hero__title .italic,
+  .contact__title .italic,
+  .section__title em { color: var(--ink-35); }
+}
+
 .hero__lead {
   max-width: 34ch; margin: clamp(20px, 3vh, 32px) 0 clamp(24px, 4vh, 38px);
   font-size: clamp(17px, 1.35vw, 21px); line-height: 1.5;
@@ -153,6 +170,18 @@ img { max-width: 100%; display: block; }
   transition: transform .25s, opacity .25s;
 }
 .btn:hover { transform: translateY(-2px); }
+/* 한글 라벨은 Oswald 에 글자가 없어 Pretendard 로 떨어진다.
+   영문용 자간(.14em)을 그대로 두면 글자가 흩어져 보인다. */
+.btn--kr { font-family: var(--kr); font-weight: 700; font-size: 14px; letter-spacing: .02em; text-transform: none; }
+
+/* 주 버튼 옆 보조 링크. 버튼 두 개를 나란히 두면 무엇이 주인지 흐려진다. */
+.hero__actions { display: flex; align-items: center; flex-wrap: wrap; gap: clamp(14px, 2vw, 26px); }
+.btn-text {
+  font-family: var(--kr); font-weight: 600; font-size: 15px;
+  border-bottom: 1px solid var(--ink-35); padding-bottom: 3px;
+  transition: border-color .25s, opacity .25s;
+}
+.btn-text:hover { border-color: var(--ink); }
 .btn__arrow {
   display: grid; place-items: center;
   width: 38px; height: 38px; border-radius: 50%;
@@ -202,6 +231,12 @@ img { max-width: 100%; display: block; }
   display: block; font-family: var(--heavy); font-weight: 400;
   font-size: clamp(28px, 3vw, 42px); line-height: 1;
 }
+/* 한글 값은 Anton 에 글자가 없어 Pretendard 로 떨어진다.
+   그대로 두면 옆 숫자보다 가늘고 넓어 보인다. 굵기를 올리고 크기를 줄여 맞춘다. */
+.hero__stats b.is-kr {
+  font-family: var(--kr); font-weight: 800;
+  font-size: clamp(20px, 2vw, 27px); letter-spacing: -.01em;
+}
 .hero__stats span { font-size: 15px; color: var(--ink-60); }
 
 /* ── 서비스 스트립 ───────────────────────────────── */
@@ -239,10 +274,7 @@ img { max-width: 100%; display: block; }
   font-size: clamp(38px, 6vw, 84px); line-height: .96;
   margin-bottom: clamp(30px, 5vh, 58px);
 }
-.section__title em {
-  font-family: var(--ital); font-style: italic; font-weight: 700;
-  text-transform: none;
-}
+.section__title em { font-family: var(--heavy); }
 
 /* ── WORK ────────────────────────────────────────── */
 .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(24px, 3.5vw, 52px); }
@@ -264,6 +296,18 @@ img { max-width: 100%; display: block; }
   align-items: baseline; gap: 6px 16px;
   padding-top: 16px; border-top: 1px solid var(--rule); margin-top: 16px;
 }
+/* 사진이 아직 없는 실적. 번호를 크게 세워 목록처럼 읽히게 한다. */
+.work--flat {
+  display: grid; grid-template-columns: auto 1fr;
+  gap: clamp(14px, 1.6vw, 24px); align-items: start;
+  border-top: 2px solid var(--ink); padding-top: 18px;
+}
+.work--flat .work__index {
+  font-family: var(--heavy); font-weight: 400; line-height: .9;
+  font-size: clamp(30px, 3.4vw, 46px); color: var(--ink-35);
+}
+.work--flat .work__meta { border-top: 0; padding-top: 0; margin-top: 0; }
+
 .work__meta h3 {
   grid-column: 1; grid-row: 1;
   font-family: var(--cond); font-size: clamp(18px, 1.7vw, 24px); font-weight: 600;
@@ -302,17 +346,88 @@ img { max-width: 100%; display: block; }
 }
 .process p { font-size: 15px; color: var(--ink-60); }
 
+/* ── CURRICULUM ──────────────────────────────────── */
+/* 제목 바로 밑에 붙는 한 줄 설명. 제목의 큰 아래 여백을 여기로 옮긴다. */
+#curriculum .section__title,
+#work .section__title { margin-bottom: 14px; }
+.section__note {
+  max-width: 56ch; color: var(--ink-60);
+  margin-bottom: clamp(30px, 5vh, 58px);
+}
+
+.tracks {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: clamp(28px, 4vw, 64px); align-items: start;
+}
+.track { border-top: 2px solid var(--ink); padding-top: 20px; }
+
+.track__head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 12px 20px; flex-wrap: wrap;
+}
+.track__head h3 {
+  font-family: var(--kr); font-weight: 800;
+  font-size: clamp(21px, 2.3vw, 29px); letter-spacing: -.01em;
+}
+.track__hours { font-size: 14px; color: var(--ink-60); }
+.track__goal { margin: 14px 0 20px; max-width: 44ch; }
+
+/* 대상·정원·형식. 기관이 제일 먼저 훑는 줄이다. */
+.track__meta { display: grid; margin-bottom: 24px; }
+.track__meta > div {
+  display: flex; justify-content: space-between; gap: 16px;
+  padding: 11px 0; border-top: 1px solid var(--rule);
+}
+.track__meta > div:last-child { border-bottom: 1px solid var(--rule); }
+.track__meta dt { font-family: var(--kr); font-weight: 700; font-size: 13px; white-space: nowrap; }
+.track__meta dd { font-size: 14px; color: var(--ink-60); text-align: right; }
+
+.track__sessions { list-style: none; display: grid; }
+.track__session {
+  display: grid; grid-template-columns: auto 1fr; gap: 14px;
+  padding: 16px 0; border-top: 1px solid var(--rule);
+}
+.track__session:last-child { border-bottom: 1px solid var(--rule); }
+.track__no {
+  font-family: var(--heavy); font-weight: 400;
+  font-size: 22px; line-height: 1.15; color: var(--ink-35);
+}
+.track__body h4 { font-family: var(--kr); font-weight: 700; font-size: 16px; margin-bottom: 5px; }
+.track__body p { font-size: 14px; line-height: 1.5; color: var(--ink-60); }
+
+/* 회차마다 무엇이 남는지. 기관 입장에서 이게 곧 성과물이다. */
+.track__out {
+  display: block; margin-top: 10px; padding-left: 11px;
+  border-left: 3px solid var(--accent);
+  font-size: 13.5px; font-weight: 700;
+}
+.track__out::before { content: '산출물 '; font-weight: 500; color: var(--ink-60); }
+
+/* 계약 전에 반드시 나오는 질문들 */
+.ops {
+  margin-top: clamp(34px, 5vh, 64px);
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 0 clamp(28px, 4vw, 64px);
+  border-top: 2px solid var(--ink);
+}
+.ops > div {
+  display: grid; grid-template-columns: 92px 1fr; gap: 16px;
+  padding: 15px 0; border-bottom: 1px solid var(--rule);
+}
+.ops dt { font-family: var(--kr); font-weight: 700; font-size: 13px; }
+.ops dd { font-size: 14px; color: var(--ink-60); }
+
 /* ── CONTACT ─────────────────────────────────────── */
 .contact { text-align: center; border-top: 1px solid var(--rule); }
 .contact__title {
   font-weight: 400; line-height: .95; text-transform: uppercase;
   margin-bottom: clamp(24px, 4vh, 44px);
 }
-.contact__title span { display: block; }
-.contact__title .heavy { font-family: var(--heavy); font-size: clamp(44px, 9vw, 130px); }
-.contact__title .italic {
-  font-family: var(--ital); font-style: italic; font-weight: 700;
-  text-transform: none; font-size: clamp(44px, 9vw, 130px);
+.contact__title span {
+  display: block;
+  font-family: var(--heavy);
+  font-size: clamp(44px, 9vw, 130px);
+  padding-block: .04em;
 }
 .contact__mail {
   display: inline-block; font-size: clamp(18px, 2.2vw, 28px);
@@ -351,6 +466,7 @@ img { max-width: 100%; display: block; }
   .strip { grid-template-columns: repeat(2, 1fr); row-gap: 30px; }
   .strip article:nth-child(3) { border-left: 0; padding-left: 0; }
   .process { grid-template-columns: repeat(2, 1fr); row-gap: 34px; }
+  .tracks { grid-template-columns: 1fr; gap: clamp(34px, 5vh, 56px); }
 }
 
 @media (max-width: 760px) {
@@ -367,6 +483,10 @@ img { max-width: 100%; display: block; }
   .about__body { grid-template-columns: 1fr; }
   .about__list { grid-column: 1; grid-row: auto; }
   .process { grid-template-columns: 1fr; }
+  .ops { grid-template-columns: 1fr; }
+  .ops > div { grid-template-columns: 1fr; gap: 4px; }
+  .track__meta > div { flex-direction: column; gap: 2px; }
+  .track__meta dd { text-align: left; }
   .footer { justify-content: flex-start; }
 }
 
