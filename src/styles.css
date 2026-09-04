@@ -264,6 +264,7 @@ img { max-width: 100%; display: block; }
 
 /* ── 공통 섹션 ───────────────────────────────────── */
 .section { padding: clamp(64px, 12vh, 140px) var(--pad); }
+.section + .section { border-top: 1px solid var(--rule); }
 .section__title {
   font-family: var(--heavy); font-weight: 400; text-transform: uppercase;
   font-size: clamp(38px, 6vw, 84px); line-height: .96;
@@ -425,7 +426,7 @@ img { max-width: 100%; display: block; }
 .ops dd { font-size: 14px; color: var(--ink-60); }
 
 /* ── CONTACT ─────────────────────────────────────── */
-.contact { text-align: center; border-top: 1px solid var(--rule); }
+.contact { text-align: center; }
 .contact__title {
   font-weight: 400; line-height: .95; text-transform: uppercase;
   margin-bottom: clamp(24px, 4vh, 44px);
