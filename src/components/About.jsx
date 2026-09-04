@@ -12,7 +12,9 @@ export default function About() {
 
       <div className="about__body">
         <p className="about__lead">{about.lead}</p>
-        <p>{about.body}</p>
+        {about.body.map((para, i) => (
+          <p key={i}>{para}</p>
+        ))}
 
         <ul className="about__list">
           {about.facts.map((f) => (

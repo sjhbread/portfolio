@@ -7,7 +7,10 @@ function Step({ step, index }) {
   return (
     <li ref={ref} data-reveal="">
       <b>{step.no}</b>
-      <h3>{step.title}</h3>
+      <h3>
+        {step.title}
+        <span className="process__ko">{step.ko}</span>
+      </h3>
       <p>{step.desc}</p>
     </li>
   )

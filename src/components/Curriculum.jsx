@@ -40,6 +40,8 @@ function Track({ track, index }) {
           <Session key={s.no} session={s} />
         ))}
       </ol>
+
+      {track.note && <p className="track__note">{track.note}</p>}
     </article>
   )
 }

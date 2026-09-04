@@ -32,7 +32,7 @@ export default function Hero() {
             </i>
           </a>
 
-          <a className="btn-text" href={site.ctaSecondary.href}>
+          <a className="btn-text" href={site.ctaSecondary.href || site.mailto}>
             {site.ctaSecondary.label}
           </a>
         </div>

@@ -13,8 +13,11 @@ export function Contact() {
         ))}
       </h2>
 
-      <a className="contact__mail" href={`mailto:${site.email}`}>
-        {site.email}
+      <p className="contact__lead">{contact.lead}</p>
+
+      <a className="contact__mail" href={site.mailto}>
+        {contact.ctaLabel}
+        <small>{site.email}</small>
       </a>
 
       <div className="contact__links">
