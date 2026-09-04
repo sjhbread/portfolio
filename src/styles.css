@@ -55,14 +55,13 @@ img { max-width: 100%; display: block; }
 .topbar > * { pointer-events: auto; }
 
 .logo {
-  display: inline-flex; align-items: center; gap: 10px;
+  display: inline-flex; align-items: center;
   font-family: var(--heavy); font-size: 20px; letter-spacing: .06em;
   text-transform: uppercase;
   transition: opacity .35s ease, transform .35s ease;
 }
 /* 스크롤을 내리면 사라진다. pointer-events 를 꺼야 안 보이는 링크가 안 눌린다. */
 .logo.is-hidden { opacity: 0; transform: translateY(-8px); pointer-events: none; }
-.logo .dot { width: 11px; height: 11px; border-radius: 50%; background: var(--ink); }
 
 .menu-btn {
   display: inline-flex; align-items: center; gap: 16px;

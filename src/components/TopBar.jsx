@@ -16,7 +16,6 @@ export default function TopBar({ open, onToggle }) {
   return (
     <header className="topbar">
       <a className={`logo${scrolled ? ' is-hidden' : ''}`} href="#top">
-        <span className="dot" />
         {site.name}
       </a>
 
