@@ -1,10 +1,9 @@
-import { about, sections } from '../content'
+import { about } from '../content'
 
 export default function About() {
   return (
     <section className="section about" id="about">
       <div className="section__head">
-        <span className="eyebrow">{sections.about.eyebrow}</span>
         <h2 className="section__title">
           {about.titleHead} <em>{about.titleItalic}</em> {about.titleTail}
         </h2>

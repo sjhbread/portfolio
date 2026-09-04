@@ -1,10 +1,8 @@
-import { contact, site, sections } from '../content'
+import { contact, site } from '../content'
 
 export function Contact() {
   return (
     <section className="section contact" id="contact">
-      <span className="eyebrow">{sections.contact.eyebrow}</span>
-
       <h2 className="contact__title">
         {contact.lines.map((line, i) => (
           <span key={i} className={line.style}>

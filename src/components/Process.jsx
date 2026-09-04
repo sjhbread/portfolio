@@ -20,7 +20,6 @@ export default function Process() {
   return (
     <section className="section" id="process">
       <div className="section__head">
-        <span className="eyebrow">{sections.process.eyebrow}</span>
         <h2 className="section__title">
           {sections.process.head} <em>{sections.process.italic}</em>
         </h2>

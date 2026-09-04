@@ -50,7 +50,6 @@ export default function Curriculum() {
   return (
     <section className="section" id="curriculum">
       <div className="section__head">
-        <span className="eyebrow">{sections.curriculum.eyebrow}</span>
         <h2 className="section__title">
           {sections.curriculum.head} <em>{sections.curriculum.italic}</em>
         </h2>

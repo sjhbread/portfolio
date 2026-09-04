@@ -39,7 +39,6 @@ export default function Work() {
   return (
     <section className="section" id="work">
       <div className="section__head">
-        <span className="eyebrow">{sections.work.eyebrow}</span>
         <h2 className="section__title">
           {sections.work.head} <em>{sections.work.italic}</em>
         </h2>

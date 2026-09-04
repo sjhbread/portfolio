@@ -58,17 +58,15 @@ export const marqueeText =
   'Vibe Coding ✱ Claude Code ✱ AI Pair Programming ✱ Ship It ✱ No Experience Needed ✱'
 
 // 섹션 제목. head = 굵은 대문자, italic = 윤곽선 대문자
+// About / Contact 은 제목만 있고 따로 설정할 값이 없어 항목이 없다.
 export const sections = {
   work: {
-    eyebrow: '01 — Teaching Record',
     head: 'Teaching',
     italic: 'Record',
     note: '초등학생부터 대학생까지 총 34회, 96시간의 프로그래밍 교육을 진행했습니다. 학습자의 연령과 경험에 맞춰 예제와 난이도를 설계했습니다.',
   },
-  about: { eyebrow: '02 — About' },
-  process: { eyebrow: '03 — How It Works', head: 'How It', italic: 'Works' },
-  curriculum: { eyebrow: '04 — Proposed Programs', head: 'Proposed', italic: 'Programs' },
-  contact: { eyebrow: '05 — Contact' },
+  process: { head: 'How It', italic: 'Works' },
+  curriculum: { head: 'Proposed', italic: 'Programs' },
 }
 
 // 확인된 사실만 적는다. 기관 제출물이라 못 대는 근거는 그대로 리스크가 된다.
