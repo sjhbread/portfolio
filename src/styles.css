@@ -158,10 +158,6 @@ img { max-width: 100%; display: block; }
   .section__title em { color: var(--ink-35); }
 }
 
-.hero__lead {
-  max-width: 34ch; margin: clamp(20px, 3vh, 32px) 0 clamp(24px, 4vh, 38px);
-  font-size: clamp(17px, 1.35vw, 21px); line-height: 1.5;
-}
 
 .btn {
   display: inline-flex; align-items: center; gap: 20px;
@@ -177,7 +173,11 @@ img { max-width: 100%; display: block; }
 .btn--kr { font-family: var(--kr); font-weight: 700; font-size: 14px; letter-spacing: .02em; text-transform: none; }
 
 /* 주 버튼 옆 보조 링크. 버튼 두 개를 나란히 두면 무엇이 주인지 흐려진다. */
-.hero__actions { display: flex; align-items: center; flex-wrap: wrap; gap: clamp(14px, 2vw, 26px); }
+.hero__actions {
+  display: flex; align-items: center; flex-wrap: wrap;
+  gap: clamp(14px, 2vw, 26px);
+  margin-top: clamp(28px, 4.5vh, 46px);
+}
 .btn-text {
   font-family: var(--kr); font-weight: 600; font-size: 15px;
   border-bottom: 1px solid var(--ink-35); padding-bottom: 3px;

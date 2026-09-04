@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { site, heroTitle, heroLead, stats } from '../content'
+import { site, heroTitle, stats } from '../content'
 
 // public/photo.jpg 를 넣으면 사진이 뜬다. 없으면 안내 문구가 보인다.
 const PHOTO = `${import.meta.env.BASE_URL}photo.jpg`
@@ -19,8 +19,6 @@ export default function Hero() {
             </span>
           ))}
         </h1>
-
-        <p className="hero__lead">{heroLead}</p>
 
         <div className="hero__actions">
           <a className="btn btn--kr" href={site.ctaPrimary.href}>
