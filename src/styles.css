@@ -359,11 +359,8 @@ img { max-width: 100%; display: block; }
   margin-bottom: clamp(30px, 5vh, 58px);
 }
 
-.tracks {
-  display: grid; grid-template-columns: repeat(2, 1fr);
-  gap: clamp(28px, 4vw, 64px); align-items: start;
-}
-.track { border-top: 2px solid var(--ink); padding-top: 20px; }
+/* 과정 하나만 제안한다. 예전 2단 배치는 필요 없다. */
+.track { border-top: 2px solid var(--ink); padding-top: 22px; }
 
 .track__head {
   display: flex; align-items: baseline; justify-content: space-between;
@@ -371,44 +368,95 @@ img { max-width: 100%; display: block; }
 }
 .track__head h3 {
   font-family: var(--kr); font-weight: 800;
-  font-size: clamp(21px, 2.3vw, 29px); letter-spacing: -.01em;
+  font-size: clamp(22px, 2.6vw, 34px); letter-spacing: -.01em;
 }
-.track__hours { font-size: 14px; color: var(--ink-60); }
-.track__goal { margin: 14px 0 20px; max-width: 44ch; }
+.track__hours { font-size: 15px; color: var(--ink-60); }
+.track__goal { margin: 14px 0 24px; max-width: 52ch; }
 
 /* 대상·정원·형식. 기관이 제일 먼저 훑는 줄이다. */
-.track__meta { display: grid; margin-bottom: 24px; }
-.track__meta > div {
-  display: flex; justify-content: space-between; gap: 16px;
-  padding: 11px 0; border-top: 1px solid var(--rule);
+.track__meta {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0 clamp(20px, 3vw, 44px);
+  margin-bottom: clamp(44px, 7vh, 88px);
+  border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
 }
-.track__meta > div:last-child { border-bottom: 1px solid var(--rule); }
-.track__meta dt { font-family: var(--kr); font-weight: 700; font-size: 13px; white-space: nowrap; }
-.track__meta dd { font-size: 14px; color: var(--ink-60); text-align: right; }
+/* 라벨과 값을 한 줄에 나란히 두면 3단에서는 서로 붙어 읽히지 않는다. 위아래로 쌓는다. */
+.track__meta > div { padding: 14px 0; }
+.track__meta dt {
+  font-family: var(--cond); font-weight: 600; font-size: 12px;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--ink-60);
+  margin-bottom: 5px;
+}
+.track__meta dd { font-family: var(--kr); font-weight: 700; font-size: 15px; }
 
-.track__sessions { list-style: none; display: grid; }
-.track__session {
-  display: grid; grid-template-columns: auto 1fr; gap: 14px;
-  padding: 16px 0; border-top: 1px solid var(--rule);
+/* ── 회차 타임라인 ───────────────────────────────
+   가운데 세로선을 두고 회차가 좌우로 번갈아 붙는다.
+   --tl-gap 은 두 칸 사이 간격. 점선이 이 간격의 절반만큼
+   가운데로 더 뻗어야 선에 닿는다. */
+.timeline {
+  --tl-gap: clamp(30px, 4.5vw, 72px);
+  --tl-badge: 48px;
+  position: relative; list-style: none;
+  display: grid; row-gap: clamp(34px, 5vh, 64px);
 }
-.track__session:last-child { border-bottom: 1px solid var(--rule); }
-.track__no {
-  font-family: var(--heavy); font-weight: 400;
-  font-size: 22px; line-height: 1.15; color: var(--ink-35);
+/* 첫 점에서 마지막 점까지만 선을 긋는다. */
+.timeline::before {
+  content: ''; position: absolute;
+  left: 50%; transform: translateX(-50%);
+  top: calc(var(--tl-badge) / 2); bottom: calc(var(--tl-badge) / 2);
+  width: 1px; background: var(--ink-35);
 }
-.track__body h4 { font-family: var(--kr); font-weight: 700; font-size: 16px; margin-bottom: 5px; }
-.track__body p { font-size: 14px; line-height: 1.5; color: var(--ink-60); }
+
+.tl-step {
+  position: relative;
+  display: grid; grid-template-columns: 1fr 1fr;
+  column-gap: var(--tl-gap);
+}
+.tl-step.is-left .tl-step__side { grid-column: 1; text-align: right; }
+.tl-step.is-right .tl-step__side { grid-column: 2; text-align: left; }
+
+/* 세로선 위에 찍히는 점. 배지 높이의 한가운데에 온다. */
+.tl-step__dot {
+  position: absolute; left: 50%; top: calc(var(--tl-badge) / 2);
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--ink); transform: translate(-50%, -50%);
+}
+
+.tl-step__connector { display: flex; align-items: center; margin-bottom: 16px; }
+.tl-step.is-right .tl-step__connector { flex-direction: row-reverse; }
+
+.tl-step__badge {
+  flex: none; display: grid; place-items: center;
+  width: var(--tl-badge); height: var(--tl-badge); border-radius: 50%;
+  background: var(--ink); color: var(--bg);
+  font-family: var(--heavy); font-weight: 400; font-size: 19px; line-height: 1;
+}
+.tl-step__dash { flex: 1; border-top: 1px dashed var(--ink-35); }
+.tl-step.is-left .tl-step__dash { margin-right: calc(var(--tl-gap) / -2); }
+.tl-step.is-right .tl-step__dash { margin-left: calc(var(--tl-gap) / -2); }
+
+.tl-step__label {
+  display: block; font-family: var(--cond); font-size: 12px; font-weight: 600;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--ink-60);
+  margin-bottom: 7px;
+}
+.tl-step__body h4 {
+  font-family: var(--kr); font-weight: 800; letter-spacing: -.01em;
+  font-size: clamp(19px, 2.1vw, 27px); margin-bottom: 9px;
+}
+.tl-step__body p { font-size: 15px; line-height: 1.55; color: var(--ink-60); max-width: 34ch; }
+.tl-step.is-left .tl-step__body p { margin-left: auto; }
 
 /* 회차마다 무엇이 남는지. 기관 입장에서 이게 곧 성과물이다. */
-.track__out {
-  display: block; margin-top: 10px; padding-left: 11px;
+.tl-step__out {
+  display: inline-block; margin-top: 13px; padding-left: 11px;
   border-left: 3px solid var(--accent);
-  font-size: 13.5px; font-weight: 700;
+  font-size: 13.5px; font-weight: 700; text-align: left;
 }
-.track__out::before { content: '산출물 '; font-weight: 500; color: var(--ink-60); }
+.tl-step__out::before { content: '산출물 '; font-weight: 500; color: var(--ink-60); }
 
 .track__note {
-  margin-top: 16px; padding-left: 11px;
+  margin-top: clamp(34px, 5vh, 60px); padding-left: 11px;
   border-left: 2px solid var(--ink-35);
   font-size: 13px; color: var(--ink-60);
 }
@@ -485,7 +533,7 @@ img { max-width: 100%; display: block; }
   .strip { grid-template-columns: repeat(2, 1fr); row-gap: 30px; }
   .strip article:nth-child(3) { border-left: 0; padding-left: 0; }
   .process { grid-template-columns: repeat(2, 1fr); row-gap: 34px; }
-  .tracks { grid-template-columns: 1fr; gap: clamp(34px, 5vh, 56px); }
+  .track__meta { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 760px) {
@@ -504,8 +552,22 @@ img { max-width: 100%; display: block; }
   .process { grid-template-columns: 1fr; }
   .ops { grid-template-columns: 1fr; }
   .ops > div { grid-template-columns: 1fr; gap: 4px; }
-  .track__meta > div { flex-direction: column; gap: 2px; }
-  .track__meta dd { text-align: left; }
+  .track__meta { grid-template-columns: 1fr; }
+
+  .timeline::before { left: calc(var(--tl-badge) / 2); transform: none; }
+  .tl-step { grid-template-columns: 1fr; }
+  .tl-step.is-left .tl-step__side,
+  .tl-step.is-right .tl-step__side {
+    grid-column: 1; text-align: left;
+    padding-left: calc(var(--tl-badge) + 20px);
+  }
+  /* 좁은 화면에서는 배지가 곧 선 위의 표시다. 점과 점선은 필요 없다. */
+  .tl-step__dot, .tl-step__dash { display: none; }
+  .tl-step__connector {
+    position: absolute; left: 0; top: 0; margin-bottom: 0;
+  }
+  .tl-step.is-left .tl-step__body p,
+  .tl-step.is-right .tl-step__body p { margin-left: 0; max-width: none; }
   .footer { justify-content: flex-start; }
 }
 
