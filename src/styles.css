@@ -447,13 +447,19 @@ img { max-width: 100%; display: block; }
 .tl-step__body p { font-size: 15px; line-height: 1.55; color: var(--ink-60); max-width: 34ch; }
 .tl-step.is-left .tl-step__body p { margin-left: auto; }
 
-/* 회차마다 무엇이 남는지. 기관 입장에서 이게 곧 성과물이다. */
+/* 회차마다 무엇이 남는지. 기관 입장에서 이게 곧 성과물이다.
+   노랑은 사진 아치와 버튼에서 이미 쓰고 있다. 여기까지 노랑을 쓰면 산만해진다. */
 .tl-step__out {
-  display: inline-block; margin-top: 13px; padding-left: 11px;
-  border-left: 3px solid var(--accent);
+  display: inline-block; margin-top: 14px; padding-left: 12px;
+  border-left: 2px solid var(--ink);
   font-size: 13.5px; font-weight: 700; text-align: left;
 }
-.tl-step__out::before { content: '산출물 '; font-weight: 500; color: var(--ink-60); }
+.tl-step__out::before {
+  content: '산출물'; display: block;
+  font-family: var(--cond); font-weight: 600; font-size: 11px;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--ink-60); margin-bottom: 3px;
+}
 
 .track__note {
   margin-top: clamp(34px, 5vh, 60px); padding-left: 11px;
